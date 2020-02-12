@@ -83,6 +83,20 @@ function spotifyThis()
 function whatItSays()
 {
  console.log("what it says!")
+ fs.readFile("./random.txt", "utf8", function(error, data)
+ {
+     if (error)
+     {
+         return console.log(error);
+     }
+
+     var data1 = data.split(",");
+ 
+     command = data1[0];
+     apiParam = data1[1];
+ 
+     spotify();
+ });
 }
 
 function bands()
