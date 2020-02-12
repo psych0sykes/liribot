@@ -102,6 +102,60 @@ function whatItSays()
 function bands()
 {
     console.log("band bois in town")
+    testAPI();
+
+    axios.get(queryUrlBIT).then(
+        function(response)
+        {
+            for (var i = 0; i < response.data.length; i++)
+            {
+                var artist = "artist: " + response.data[i].lineup;
+                console.log(artist);
+
+                var venue = "venue: " + response.data[i].venue.name;
+                console.log(venue);
+
+                var venueLoc = "location: " + response.data[i].venue.city + ", " + response.data[i].venue.country;
+                console.log(venueLoc);
+                var dateArray = response.data[i].datetime.split("T");
+                var date = dateArray[0];
+                var time = dateArray[1];
+                var properDate = moment(date);
+
+                var eventDate = "date: " + properDate.format("MM/DD/YYYY");
+                console.log(eventDate);
+
+                var eventTime = "time: " + time;
+                console.log(eventTime);
+
+                var lineBreak = "\n------------------------------\n";
+                console.log(lineBreak);
+
+                var dataBIT = "BANDS IN TOWN DATA:" + "\n" + artist + "\n" + venue + "\n" + venueLoc + "\n" + eventDate + "\n" + eventTime + "\n" + lineBreak;
+
+                logit(dataBIT);
+            }
+        })
+        .catch(function(error)
+        {
+            if (error.response) 
+            {
+                console.log("error error error");
+                console.log(error.response.status);
+            } 
+        
+            else if (error.request)
+            {
+                console.log(error.request);
+            } 
+        
+            else
+            {
+                console.log("Error", error.message);
+            }
+            console.log(error.config);
+        }
+    );
 }
 
 function omdb()
