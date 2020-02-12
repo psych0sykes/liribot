@@ -137,7 +137,7 @@ function bands()
 
                 var dataBIT = "BANDS IN TOWN DATA:" + "\n" + artist + "\n" + venue + "\n" + venueLoc + "\n" + eventDate + "\n" + eventTime + "\n" + lineBreak;
 
-                logit(dataBIT);
+                logIt(dataBIT);
             }
         })
         .catch(function(error)
@@ -193,7 +193,7 @@ function omdb()
 
             dataOMDB = "OMDB DATA:" + "\n" + movieTitle + "\n" + releaseYear + "\n" + ratingIMDB + "\n" + ratingRT + "\n" + produced + "\n" + plot + "\n" + starring;
 
-            logit(dataOMDB);
+            logIt(dataOMDB);
         })
         .catch(function(error)
         {
