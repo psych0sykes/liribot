@@ -5,8 +5,7 @@ var Spotify = require("node-spotify-api");
 var command = process.argv[2];
 var apiParam = process.argv[3];
 var spotify = new Spotify(keys.spotify);
-
-app();
+var fs = require("fs");
 
 function app()
 {
@@ -23,10 +22,11 @@ function app()
             break;
 
         case "spotify-this-song":
-            spotify();
+            console.log("spot")
+            spotifyThis();
             break;
 
-        case "movie-this":
+        case "movie-this":node
             omdb();
             break;
 
@@ -40,7 +40,7 @@ function app()
     }
 }
 
-function spotify()
+function spotifyThis()
 {
     testAPI();
 
@@ -74,7 +74,7 @@ function spotify()
 
                 var dataSpot = "SPOTIFY DATA:" + "\n" + artist1 + "\n" + song + "\n" + album + "\n" + preview + "\n" + lineBreak1;
 
-                logit(dataSpot);
+                logIt(dataSpot);
             }
         }
     );
@@ -95,6 +95,15 @@ function omdb()
     console.log("omdb yo")
 }
 
+function logIt(data)
+{
+    fs.appendFile("./log.txt", data, function (err)
+    {
+
+        if (err) throw err;
+
+    });
+}
 
 function testAPI()
 {
@@ -108,3 +117,5 @@ function testAPI()
         }
     }
 }
+
+app();
